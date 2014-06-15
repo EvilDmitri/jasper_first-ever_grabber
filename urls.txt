@@ -1,0 +1,68 @@
+{
+"sites": [
+{
+"name": "ultimaterewardsearn.chase.com",
+"link": "http://ultimaterewardsearn.chase.com/shopping"
+},
+
+{
+"name": "aadvantageeshopping.com",
+"link": "https://www.aadvantageeshopping.com/shopping/b____alpha.htm"
+},
+
+{
+"name": "dividendmilesstorefront.com",
+"link": "https://www.dividendmilesstorefront.com/shopping/b____alpha.htm"
+},
+
+{
+"name": "onlinemall.my.bestbuy.com",
+"link": "https://onlinemall.my.bestbuy.com/shopping/b____alpha.htm"
+},
+
+{
+"name": "mileageplusshopping.com",
+"link": "https://www.mileageplusshopping.com/shopping/b____alpha.htm"
+},
+
+{
+"name": "mileageplanshopping.com",
+"link": "https://www.mileageplanshopping.com/shopping/b____alpha.htm"
+},
+
+{
+"name": "rapidrewardsshopping.southwest.com",
+"link": "https://rapidrewardsshopping.southwest.com/shopping/b____alpha.htm"
+},
+
+{
+"name": "barclaycardrewardsboost.com",
+"link": "https://www.barclaycardrewardsboost.com/shopping/b____alpha.htm"
+},
+
+{
+"name": "skymilesshopping.com",
+"link": "http://www.skymilesshopping.com/shopping/b____alpha.htm"
+},
+
+{
+"name": "shop.upromise.com",
+"link": "http://shop.upromise.com/mall/view-all-companies"
+},
+
+{
+"name": "discover.com",
+"link": "https://www.discover.com/credit-cards/cashback-bonus/xml/ShopD_Public_CBB_Partners.xml?"
+},
+
+{
+"name": "shop.amtrakguestrewards.com",
+"link": "http://shop.amtrakguestrewards.com/az"
+},
+
+{
+"name": "shop.lifemiles.com",
+"link": "http://shop.lifemiles.com/en/az"
+}
+]
+}
