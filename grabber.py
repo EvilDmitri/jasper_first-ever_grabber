@@ -1,56 +1,21 @@
-from config import URLS
-
-class Grabber():
-    def get(self):
-        success = 0
-        for site_name in URLS:
-            if 'discover.com' in site_name:
-                task_name = 'XmlGrabber'
-            elif 'shop.upromise.com' in site_name:
-                task_name = 'ShopGrabber'
-
-            elif site_name in ['shop.amtrakguestrewards.com', 'shop.lifemiles.com']:
-                task_name = 'RetailersGrabber'
-            # elif 'www.bestbuy.com' in site_name:
-            #     grabber = BestbuyGrabber(site_name)
-            else:
-                task_name = 'UltimateRewardsGrabber'
-
-            # if grabber.grab():
-            #     success += 1
-
-        # Now it's time to check if data is changed since last scrape and if so post an email
-
-        return 'OK'
-
-
-
-
  # -*- coding: utf-8 -*-
 
-from models import Data, session, table_name
+from models import Data, session
 
 import json
 import logging
 import os
-import feedparser
-from datetime import datetime
+
 
 from grab.spider import Spider, Task
-from grab.tools import html
+
 
 from grab.tools.logs import default_logging
-from hashlib import sha1
 
 default_logging(level=logging.DEBUG)
 
 path = os.path.dirname(os.path.abspath(__file__))
 URLS_FILE = os.path.join(path, 'urls.txt')
-
-
-RSS_LINK = 'http://pathmark.inserts2online.com/rss.jsp?drpStoreID={0}'
-
-IMAGE_DIR = os.path.join(path, 'images/')
 
 THREADS = 2
 
@@ -107,11 +72,19 @@ class FirstSpider(Spider):
             session.add(data)
         session.commit()
 
+    def task_ultimate(self, grab, task):
+        lines = grab.xpath_list('//div[@class="mn_srchListSection"]/ul/li')
+        for line in lines:
+            title = line.getchildren()[0].text_content()
+            cost = line.getchildren()[2].text_content().strip().replace(u'\xa0', ' ')
+            data = Data(site_name=task.site_name, title=title, cost=cost)
+            session.add(data)
+        session.commit()
+
 
 def main():
     bot = FirstSpider()
 
-    # bot.setup_proxylist(proxy_file='proxy.lst')
     bot.setup_grab(hammer_mode=True)
 
     try:
