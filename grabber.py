@@ -50,7 +50,7 @@ class FirstSpider(Spider):
             title = line.attrib['p']
             cost = ''.join([str(float(line.attrib['cbb']) * 100) + '% Cashback'])
 
-            data = Data(site_name=task.site_name, title=title, cost=cost)
+            data = Data(site_name=task.site_name, title=title.encode('utf-8'), cost=cost.encode('utf-8'))
             session.add(data)
         session.commit()
 
@@ -59,7 +59,7 @@ class FirstSpider(Spider):
         for line in lines:
             title = line.text_content()
             cost = line.tail.strip()
-            data = Data(site_name=task.site_name, title=title, cost=cost)
+            data = Data(site_name=task.site_name, title=title.encode('utf-8'), cost=cost.encode('utf-8'))
             session.add(data)
         session.commit()
 
@@ -68,7 +68,7 @@ class FirstSpider(Spider):
         for line in lines:
             title = line[1].text_content()
             cost = line[2].text_content().strip()
-            data = Data(site_name=task.site_name, title=title, cost=cost)
+            data = Data(site_name=task.site_name, title=title.encode('utf-8'), cost=cost.encode('utf-8'))
             session.add(data)
         session.commit()
 
@@ -76,8 +76,8 @@ class FirstSpider(Spider):
         lines = grab.xpath_list('//div[@class="mn_srchListSection"]/ul/li')
         for line in lines:
             title = line.getchildren()[0].text_content()
-            cost = line.getchildren()[2].text_content().strip().replace(u'\xa0', ' ')
-            data = Data(site_name=task.site_name, title=title, cost=cost)
+            cost = line.getchildren()[2].text_content().strip()
+            data = Data(site_name=task.site_name, title=title.encode('utf8'), cost=cost.encode('utf-8'))
             session.add(data)
         session.commit()
 
