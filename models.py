@@ -7,7 +7,7 @@ meta = MetaData()
 
 table_name = strftime('%d_%m_%Y_%H_%M_%S', gmtime())
 
-# Store Number, Product, Description, Price, Saving, Valid From, Valid To, Image Path
+
 data_table = Table(table_name, meta,
                    Column('id', Integer, primary_key=True, autoincrement=True),
                    Column('site_name', String(254)),
