@@ -12,7 +12,7 @@ now_is = datetime.now()
 
 
 def is_old(table):
-    old_date = datetime.strptime(table, '%d_%m_%Y_%H_%M_%S')
+    old_date = datetime.strptime(table.__str__(), '%d_%m_%Y_%H_%M_%S')
     print now_is - old_date
     if (now_is - old_date).days > 30:
         return True
