@@ -8,7 +8,7 @@ engine = create_engine('mysql://scraper@localhost/first_ever_grabber_data')
 
 meta = MetaData()
 
-now_is = datetime.datetime.now()
+now_is = datetime.now()
 
 
 def is_old(table):
